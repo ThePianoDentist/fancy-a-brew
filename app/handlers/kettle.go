@@ -101,6 +101,7 @@ func PostOfferBrew(appCtx *app_context.AppContext, w http.ResponseWriter, r *htt
 	data := map[string]string{
 		"kettleId":   kettleId.String(),
 		"kettleName": kettle.Name,
+		"type":       "offer",
 		// TODO get username of maker (send firebase token and then do a user-lookup)
 	}
 	if err := storage.SetCurrentMaker(appCtx.DB, kettle.KettleId, userId); err != nil {
@@ -148,7 +149,7 @@ func PostBrewResponse(appCtx *app_context.AppContext, w http.ResponseWriter, r *
 		utils.ErrorResp(appCtx.Lgr, w, http.StatusInternalServerError, "Fudge! Something went wrong. Bug reports to jkthepianodentist@gmail.com", err)
 		return
 	}
-	if err := appCtx.FcmController.SendFCM(maker.FirebaseToken, map[string]string{"choice": d.Choice, "name": d.Name}); err != nil {
+	if err := appCtx.FcmController.SendFCM(maker.FirebaseToken, map[string]string{"choice": d.Choice, "name": d.Name, "type": "drinkrequest"}); err != nil {
 		appCtx.Lgr.Error("error publishing fcm message", zap.Error(err))
 	}
 	utils.SuccessResp(appCtx.Lgr, w, http.StatusOK, struct{}{})

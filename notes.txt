@@ -33,3 +33,9 @@ POST
 firebase message to maker
 # 8. marks round as completed.
 POST
+
+
+
+# test with actual app.
+# prettify things
+# add rounds table and record drink-rounds (which lets opening app from notification 'fake' in-app notification)

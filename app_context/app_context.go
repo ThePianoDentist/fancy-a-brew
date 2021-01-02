@@ -8,7 +8,7 @@ import (
 
 	"go.uber.org/zap"
 
-	"github.com/ThePianoDentist/fancy-a-brew/ws"
+	ws "github.com/ThePianoDentist/fancy-a-brew/deprecatedws"
 )
 
 // Just a simple wrapper so we can pass the global state (i.e. hub) into every request.

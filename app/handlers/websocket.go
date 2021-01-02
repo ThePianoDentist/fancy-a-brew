@@ -8,7 +8,7 @@ import (
 
 	"github.com/gorilla/mux"
 
-	"github.com/ThePianoDentist/fancy-a-brew/ws"
+	ws "github.com/ThePianoDentist/fancy-a-brew/deprecatedws"
 )
 
 func WebsocketHandler(hub *ws.Hub) func(w http.ResponseWriter, r *http.Request) {

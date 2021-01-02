@@ -1,0 +1,35 @@
+# notification "making a cuppa"
+# responses "the usual (can click to check/update it"), but then a "im feeling different? better phrase" to choose custom drink.
+# kettler can specify 'out-of-tea', 'out-of-coffee'. to keep simple, maybe only do as an option after someone chooses, and then they can re-pick?
+
+# DO i need websockets to back and forth between brewer and brewees? pretty sure yes
+
+# extra features. rota for being maker?
+# stats on how many cups made/drunk
+# something like the untapped? whatever the list all beers drunk
+
+# should people need to sign up? can do anonymous accounts?
+
+# TODO handle people move away without disconnecting. use geolocation to either auto-connect or auto-disconnect.
+
+
+# websockets isnt what i want. as people need to be notified on phones when app not active.
+# so firebase cloud messaging?
+# so actions
+
+# 1: I install the app.
+# 2: I add my name (and get a user-id)
+POST request
+# 3. I choose to add or join a kettle
+GET list of kettles.
+POST to join/add
+# 4. I offer to make a round
+POST
+# 5. everyone for that kettle is notified
+firebase message
+# 6. person makes drink-request
+POST
+# 7. maker gets all responses and makes the drinks
+firebase message to maker
+# 8. marks round as completed.
+POST
